@@ -22,3 +22,4 @@ Student.prototype.addMark = function (mark) {
 // ваш код для остальных методов
 student1.setSubject("Algeb")
 student1.addMark(5)
+student1.addMark(4)
