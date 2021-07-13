@@ -23,3 +23,4 @@ Student.prototype.addMark = function (mark) {
 student1.setSubject("Algeb")
 student1.addMark(5)
 student1.addMark(4)
+console.log(student1)
