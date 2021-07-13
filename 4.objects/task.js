@@ -12,7 +12,12 @@ Student.prototype.setSubject = function (subjectName) {
 }
 
 Student.prototype.addMark = function (mark) {
-  this.marks.push(mark)
+  
+  if(this.marks === undefined){ 
+    this.marks[0] = mark
+  } else {
+    this.marks.push(mark)
+  }
 }
 // ваш код для остальных методов
 student1.setSubject("Algeb")
