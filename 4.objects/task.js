@@ -14,7 +14,7 @@ Student.prototype.setSubject = function (subjectName) {
 Student.prototype.addMark = function (mark) {
   
   if(this.marks === undefined){ 
-      let marks = []
+      this.marks = mark[];
     this.marks.push(mark)
   } else {
     this.marks.push(mark)
