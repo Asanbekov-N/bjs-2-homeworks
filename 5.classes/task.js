@@ -1,0 +1,97 @@
+class PrintEditionItem {
+  constructor(name, releaseDate, pagesCount) {
+    this.name = name;
+    this.releaseDate = releaseDate;
+    this.pagesCount = pagesCount;
+    this.state = 100;
+    this.type = null;
+  }
+
+  fix() {
+    this.state *= 1.5;
+  }
+
+  set state(value) {
+    if (value < 0) {
+      this.state = 0;
+    } else if (value > 100) {
+      this.state = 100;
+    } else {
+      this.newState = value;
+    }
+  }
+
+  get state() {
+    return this.newState;
+  }
+}
+
+class Magazine extends PrintEditionItem {
+  constructor(name, releaseDate, pagesCount) {
+    super(name, releaseDate, pagesCount);
+    this.type = "magazine";
+  }
+}
+
+class Book extends PrintEditionItem {
+  constructor(author, name, releaseDate, pagesCount) {
+    super(name, releaseDate, pagesCount);
+    this.author = author;
+    this.type = "book";
+  }
+}
+printItem = new Book('А. Сапковский', 'Меч Предназначения', 1992, 384);
+console.log(printItem.author)
+
+class NovelBook extends Book {
+  constructor(name) {
+    super(name);
+    this.type = "novel";
+  }
+}
+
+class FantasticBook extends Book {
+  constructor(name) {
+    super(name);
+    this.type = "fantastic";
+  }
+}
+
+class DetectiveBook extends Book {
+  constructor(name) {
+    super(name);
+    this.type = "detective";
+  }
+}
+
+class Library {
+  constructor(name = "", books = []) {
+    this.name = name;
+    this.books = books;
+  }
+
+  addBook(book) {
+    if (book.state > 30) {
+      this.books.push(book);
+    }
+  }
+
+  findBookBy(type, value) {
+    let searchBook = this.books.find((item) => item[type] === value);
+    if (searchBook === undefined) {
+      searchBook = null;
+    }
+    return searchBook;
+  }
+
+
+  giveBookByName(bookName) {
+    let getBook = this.books.find((item) => item.name === bookName);
+    if (getBook === undefined) {
+      return null;
+    } else {
+      this.books.splice(getBook, 1);
+      return getBook;
+    }
+  }
+}
