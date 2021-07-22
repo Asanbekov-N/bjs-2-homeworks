@@ -17,12 +17,12 @@ class PrintEditionItem {
     } else if (value > 100) {
       this.state = 100;
     } else {
-      this.newState = value;
+      this._state = value;
     }
   }
 
   get state() {
-    return this.newState;
+    return this._state;
   }
 }
 
@@ -51,15 +51,15 @@ class NovelBook extends Book {
 }
 
 class FantasticBook extends Book {
-  constructor(name) {
-    super(name);
+  constructor(name, releaseDate, pagesCount) {
+    super(name, releaseDate, pagesCount);
     this.type = "fantastic";
   }
 }
 
 class DetectiveBook extends Book {
-  constructor(name) {
-    super(name);
+  constructor(name, releaseDate, pagesCount) {
+    super(name, releaseDate, pagesCount);
     this.type = "detective";
   }
 }
@@ -90,7 +90,7 @@ class Library {
     if (getBook === undefined) {
       return null;
     } else {
-      this.books.splice(getBook, 1);
+      this.books.splice(getBook);
       return getBook;
     }
   }
