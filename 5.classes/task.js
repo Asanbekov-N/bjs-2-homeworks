@@ -44,8 +44,8 @@ printItem = new Book('А. Сапковский', 'Меч Предназначе�
 console.log(printItem.author)
 
 class NovelBook extends Book {
-  constructor(name) {
-    super(name);
+  constructor(name, releaseDate, pagesCount) {
+    super(name, releaseDate, pagesCount);
     this.type = "novel";
   }
 }
@@ -86,12 +86,13 @@ class Library {
 
 
   giveBookByName(bookName) {
-    let getBook = this.books.find((item) => item.name === bookName);
-    if (getBook === undefined) {
+    let getBook = this.books.indexOf(this.books.find((item) => item.name === bookName));
+    if (getBook === -1) {
       return null;
     } else {
+      let bookToReturn = this.books[getBook];
       this.books.splice(getBook);
-      return getBook;
+      return bookToReturn;
     }
   }
 }
